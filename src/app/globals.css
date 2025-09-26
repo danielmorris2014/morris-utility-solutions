@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/* Base */
+html, body { height: 100%; }
+body { @apply bg-gray-50 text-gray-900 antialiased; }
+
+/* Layout */
+.container { @apply max-w-6xl mx-auto px-4; }
+.section { @apply py-16 md:py-24; }
+
+/* Typography */
+.h1 { @apply text-4xl md:text-5xl font-semibold leading-tight; }
+.h2 { @apply text-3xl md:text-4xl font-semibold; }
+.h3 { @apply text-lg font-semibold; }
+.lead { @apply text-lg md:text-xl leading-relaxed; }
+.muted { @apply text-gray-600; }
+
+/* Buttons */
+.btn { @apply inline-flex items-center gap-2 rounded-2xl px-5 py-2.5 border font-medium transition; }
+.btn-primary { background-color:#2ecc71; border-color:#2ecc71; color:#fff; }
+.btn-primary:hover { filter: brightness(0.95); }
+/* Outline button is intended for dark surfaces (hero) */
+.btn-outline { @apply border; border-color: rgba(255,255,255,.7); color:#fff; }
+.btn-outline:hover { @apply bg-white; color:#003366; }
+
+/* Surfaces */
+.card { @apply rounded-2xl bg-white border border-gray-100 shadow-sm p-6 hover:shadow-md transition-shadow; }
+.card-plain { @apply rounded-2xl bg-white border border-gray-100 p-6; }
+
+/* Nav */
+.nav-link { @apply text-sm text-gray-700 hover:text-gray-900; }
+.nav-link-contrast { @apply text-sm text-white/90 hover:text-white; }
+
+/* Hero background — legacy support */
+.hero-pattern,
+.hero-bg {
+  background:
+    radial-gradient(900px 450px at -10% -20%, rgba(255,255,255,0.12), rgba(255,255,255,0) 60%),
+    radial-gradient(800px 400px at 120% 10%, rgba(255,255,255,0.10), rgba(255,255,255,0) 60%),
+    linear-gradient(180deg, rgba(0,51,102,1) 0%, rgba(0,45,90,1) 100%);
+}
+
+/* Polished hero (used as .hero-upgrade) — richer gradient + subtle grid overlay */
+.hero-upgrade {
+  position: relative;
+  background:
+    radial-gradient(800px 400px at -10% -20%, rgba(255,255,255,0.14), rgba(255,255,255,0) 60%),
+    radial-gradient(800px 400px at 120% 10%, rgba(255,255,255,0.12), rgba(255,255,255,0) 60%),
+    linear-gradient(180deg, #003366 0%, #002b57 60%, #012447 100%);
+}
+.hero-upgrade::after {
+  content: "";
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.06) 1px, transparent 1px);
+  background-size: 28px 28px;
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,.1));
+          mask-image: linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,.1));
+  pointer-events: none;
+}
+
+/* Little white-outline chips used in hero */
+.chip {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255,255,255,.25);
+  background: rgba(255,255,255,.08);
+  color: #fff;
+}
+
+/* Dark, high-contrast final CTA band */
+.final-cta {
+  background:
+    radial-gradient(1000px 400px at 10% -10%, rgba(255,255,255,.08), transparent 50%),
+    linear-gradient(180deg, #0b1f36 0%, #041425 100%);
+}
+
+/* Video demo helpers */
+/* 3/4-width wrapper so both portrait videos fit on most screens */
+.video-75 {
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
+}
+@media (max-width: 640px) { .video-75 { width: 85%; } }
+
+/* Phone-like frame for portrait videos */
+.phone-frame {
+  position: relative;
+  border: 12px solid #111; /* outer bezel */
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  background: #000;
+}
+.phone-frame::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem; left: 50%;
+  transform: translateX(-50%);
+  width: 5rem; height: 0.35rem; /* speaker slot */
+  background: #333;
+  border-radius: 9999px;
+  z-index: 2;
+}
+
+/* Section divider */
+.section-divider { @apply border-t border-gray-200; }
